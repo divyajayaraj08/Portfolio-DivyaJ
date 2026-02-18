@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Divya J · dev & cybersecurity</title>
+    <!-- SEO meta -->
+    <meta
+      name="description"
+      content="Portfolio of Divya J – Software Developer, RHCSA, cybersecurity enthusiast & athlete. Clean code, discipline, performance."
+    />
+    <meta name="author" content="Divya J" />
+    <!-- Google Fonts + Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* style.css – HR‑friendly sky blue theme, light background, resume button updated, profile picture added */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg-light: #f8fafc; /* very light background */
+        --card-bg: #ffffff; /* white cards */
+        --card-border: rgba(0, 0, 0, 0.05);
+        --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05),
+          0 8px 10px -6px rgba(0, 0, 0, 0.02);
+        --primary-sky: #38bdf8; /* sky blue primary */
+        --primary-dark: #0ea5e9; /* darker sky */
+        --sky-light: #7dd3fc;
+        --sky-very-light: #e0f2fe;
+        --sky-gradient: linear-gradient(135deg, #38bdf8, #0ea5e9);
+        --text-dark: #1e293b; /* dark text for light bg */
+        --text-muted: #475569;
+        --text-extra-muted: #64748b;
+        --card-radius: 24px;
+        --spacing: 2.5rem;
+        --font-sans: "Inter", "Poppins", -apple-system, BlinkMacSystemFont,
+          sans-serif;
+      }
+
+      body {
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        font-family: var(--font-sans);
+        line-height: 1.6;
+        scroll-behavior: smooth;
+        position: relative;
+      }
+
+      /* scroll progress bar – sky blue */
+      #progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 4px;
+        width: 0%;
+        background: var(--sky-gradient);
+        z-index: 999;
+        transition: width 0.1s ease;
+        box-shadow: 0 0 6px var(--primary-sky);
+      }
+
+      /* sticky navbar glass – light */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(12px) saturate(180%);
+        background: rgba(255, 255, 255, 0.7);
+        border-bottom: 1px solid var(--card-border);
+        padding: 0.8rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        font-weight: 700;
+        font-size: 1.6rem;
+        background: var(--sky-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        letter-spacing: -0.5px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.2rem;
+        font-weight: 500;
+      }
+
+      .nav-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 1rem;
+        transition: 0.2s;
+        border-bottom: 2px solid transparent;
+        padding-bottom: 4px;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-dark);
+        border-bottom-color: var(--primary-sky);
+      }
+
+      .hamburger {
+        display: none;
+        font-size: 2rem;
+        color: var(--text-dark);
+        cursor: pointer;
+      }
+
+      /* container */
+      .container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 1.5rem 2rem 3rem;
+      }
+
+      /* section reveal */
+      .section {
+        opacity: 0;
+        transform: translateY(35px);
+        transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1),
+          transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
+        margin-bottom: var(--spacing);
+      }
+
+      .section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      h2 {
+        font-size: 2.4rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 2rem;
+        color: var(--text-dark);
+        border-bottom: 2px solid var(--sky-very-light);
+        padding-bottom: 0.3rem;
+        display: inline-block;
+        background: none;
+        -webkit-background-clip: unset;
+        background-clip: unset;
+      }
+
+      /* cards – white with soft shadow */
+      .glass-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: var(--card-radius);
+        box-shadow: var(--card-shadow);
+        transition: all 0.25s ease;
+      }
+
+      .glass-card:hover {
+        box-shadow: 0 20px 30px -10px rgba(56, 189, 248, 0.2);
+        transform: translateY(-4px);
+      }
+
+      /* buttons – sky blue */
+      .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 2rem 0 1.5rem;
+        justify-content: center;
+      }
+
+      .btn {
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        transition: 0.2s;
+        border: 1px solid transparent;
+      }
+
+      .btn-primary {
+        background: var(--sky-gradient);
+        color: white;
+        box-shadow: 0 8px 16px -6px var(--primary-sky);
+      }
+
+      .btn-primary:hover {
+        box-shadow: 0 12px 20px -8px var(--primary-dark);
+        transform: scale(1.02);
+      }
+
+      .btn-outline {
+        border: 1px solid var(--primary-sky);
+        color: var(--primary-dark);
+        background: white;
+      }
+
+      .btn-outline:hover {
+        background: var(--sky-very-light);
+        border-color: var(--primary-dark);
+        color: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      /* ===== HERO SECTION – with profile picture ===== */
+      .hero-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+      }
+
+      /* profile image container */
+      .hero-avatar {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        padding: 4px; /* space for gradient border */
+        background: var(--sky-gradient);
+        box-shadow: 0 20px 30px -10px rgba(56, 189, 248, 0.3);
+        transition: transform 0.3s ease;
+        margin-bottom: 1rem;
+      }
+
+      .hero-avatar:hover {
+        transform: scale(1.02);
+      }
+
+      .profile-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid white;
+        display: block;
+      }
+
+      .hero-content h1 {
+        font-size: 4rem;
+        font-weight: 800;
+        line-height: 1.2;
+        color: var(--text-dark);
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
+        text-shadow: none;
+      }
+
+      .typed-container {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin: 0.8rem 0;
+        min-height: 4rem;
+      }
+
+      #typed-text {
+        color: var(--primary-dark);
+        border-right: 3px solid var(--primary-sky);
+        padding-right: 8px;
+      }
+
+      .hero-content p {
+        color: var(--text-muted);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 1.8rem;
+        margin-top: 1.8rem;
+        justify-content: center;
+      }
+
+      .social-icons a {
+        color: var(--text-muted);
+        font-size: 1.6rem;
+        transition: 0.2s;
+      }
+
+      .social-icons a:hover {
+        color: var(--primary-sky);
+        transform: translateY(-3px);
+      }
+
+      /* responsive */
+      @media (max-width: 700px) {
+        .hero-avatar {
+          width: 180px;
+          height: 180px;
+        }
+        .hero-content h1 {
+          font-size: 2.8rem;
+        }
+      }
+
+      /* ===== SKILLS SECTION (card categories) – light version ===== */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.8rem;
+      }
+
+      .skill-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 28px;
+        padding: 2rem 1.5rem;
+        transition: all 0.25s ease;
+        box-shadow: var(--card-shadow);
+      }
+
+      .skill-card:hover {
+        border-color: var(--primary-sky);
+        box-shadow: 0 25px 40px -16px var(--primary-sky);
+        transform: translateY(-6px);
+      }
+
+      .skill-icon {
+        font-size: 2.4rem;
+        color: var(--primary-sky);
+        margin-bottom: 1.2rem;
+        background: var(--sky-very-light);
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        border: 1px solid rgba(0, 0, 0, 0.02);
+      }
+
+      .skill-card h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.2rem;
+        color: var(--text-dark);
+      }
+
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+      }
+
+      .skill-tag {
+        background: var(--sky-very-light);
+        border: 1px solid var(--sky-light);
+        padding: 0.4rem 1.2rem;
+        border-radius: 40px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--primary-dark);
+        transition: 0.2s;
+      }
+
+      .skill-tag:hover {
+        background: var(--sky-light);
+        border-color: var(--primary-sky);
+        color: white;
+        transform: scale(1.02);
+      }
+
+      /* projects grid */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+      .project-card {
+        background: var(--card-bg);
+        border-radius: 30px;
+        padding: 1.8rem;
+        border: 1px solid var(--card-border);
+        box-shadow: var(--card-shadow);
+        transition: 0.2s;
+      }
+      .project-thumb {
+        width: 100%;
+        height: 160px;
+        background: linear-gradient(145deg, #e0f2fe, #bae6fd);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: var(--primary-sky);
+        margin-bottom: 1.2rem;
+      }
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0;
+      }
+      .tech-tag {
+        background: var(--sky-very-light);
+        padding: 0.3rem 1rem;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        color: var(--primary-dark);
+      }
+      .card-links {
+        display: flex;
+        gap: 1.2rem;
+        margin-top: 1.2rem;
+      }
+      .card-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .card-links a:hover {
+        color: var(--primary-sky);
+      }
+
+      /* timeline (education) */
+      .timeline {
+        border-left: 3px solid var(--primary-sky);
+        padding-left: 2rem;
+        margin-left: 1rem;
+      }
+      .timeline-item {
+        margin-bottom: 2rem;
+        position: relative;
+      }
+      .timeline-item::before {
+        content: "";
+        width: 14px;
+        height: 14px;
+        background: var(--primary-sky);
+        border-radius: 50%;
+        position: absolute;
+        left: -2.45rem;
+        top: 0.5rem;
+        box-shadow: 0 0 0 3px var(--sky-very-light);
+      }
+      .cgpa-highlight {
+        background: var(--sky-very-light);
+        padding: 0.2rem 1rem;
+        border-radius: 40px;
+        display: inline-block;
+        font-weight: 700;
+        margin-top: 0.4rem;
+        color: var(--primary-dark);
+        border: 1px solid var(--sky-light);
+      }
+
+      /* achievements cards */
+      .achievement-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+      }
+      .achievement-card {
+        background: var(--card-bg);
+        border-radius: 26px;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        border: 1px solid var(--card-border);
+        box-shadow: var(--card-shadow);
+        transition: 0.2s;
+      }
+      .achievement-card i {
+        font-size: 3rem;
+        color: #ffb347; /* keep gold medals */
+        margin-bottom: 1rem;
+      }
+      .achievement-card:hover {
+        border-color: var(--primary-sky);
+        box-shadow: 0 12px 24px -12px var(--primary-sky);
+      }
+
+      /* languages pill */
+      .lang-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .pill {
+        background: var(--sky-very-light);
+        border: 1px solid var(--sky-light);
+        padding: 0.6rem 1.8rem;
+        border-radius: 60px;
+        font-weight: 500;
+        color: var(--primary-dark);
+      }
+
+      /* contact row */
+      .contact-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: var(--card-bg);
+        padding: 0.8rem 1.8rem;
+        border-radius: 60px;
+        border: 1px solid var(--card-border);
+        cursor: pointer;
+        transition: 0.2s;
+        text-decoration: none;
+        color: var(--text-dark);
+        box-shadow: var(--card-shadow);
+      }
+      .contact-item:hover {
+        background: var(--sky-very-light);
+        border-color: var(--primary-sky);
+      }
+      .copy-tooltip {
+        font-size: 0.8rem;
+        background: #e2e8f0;
+        padding: 2px 8px;
+        border-radius: 20px;
+        opacity: 0.8;
+        color: var(--text-muted);
+      }
+
+      /* footer */
+      .footer {
+        text-align: center;
+        padding: 2.5rem 1rem 1.5rem;
+        border-top: 1px solid var(--card-border);
+        margin-top: 3rem;
+        color: var(--text-muted);
+      }
+      .scroll-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: var(--primary-sky);
+        width: 48px;
+        height: 48px;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        cursor: pointer;
+        opacity: 0;
+        transition: 0.2s;
+        pointer-events: none;
+        border: none;
+        z-index: 99;
+        box-shadow: 0 4px 10px rgba(56, 189, 248, 0.3);
+      }
+      .scroll-top.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .scroll-top:hover {
+        background: var(--primary-dark);
+      }
+
+      /* responsive for skills grid (3 → 2 → 1) */
+      @media (max-width: 900px) {
+        .skills-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 600px) {
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .navbar {
+          padding: 1rem;
+        }
+        .nav-links {
+          display: none;
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem 0;
+        }
+        .nav-links.active {
+          display: flex;
+        }
+        .hamburger {
+          display: block;
+        }
+        h2 {
+          font-size: 2rem;
+        }
+      }
+
+      /* ===== CHATBOT STYLES (unchanged) ===== */
+      .chatbot-toggle {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: var(--primary-sky);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+        z-index: 999;
+        transition: transform 0.2s, background 0.2s;
+        border: 2px solid white;
+      }
+      .chatbot-toggle:hover {
+        transform: scale(1.1);
+        background: var(--primary-dark);
+      }
+      .chatbot-panel {
+        position: fixed;
+        bottom: 160px;
+        right: 20px;
+        width: 320px;
+        max-width: calc(100vw - 40px);
+        height: 450px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 999;
+        border: 1px solid var(--sky-light);
+        transition: opacity 0.3s, transform 0.3s;
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+      }
+      .chatbot-panel.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+      }
+      .chatbot-header {
+        background: var(--sky-gradient);
+        color: white;
+        padding: 1rem;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .chatbot-header i {
+        cursor: pointer;
+        font-size: 1.2rem;
+      }
+      .chatbot-messages {
+        flex: 1;
+        padding: 1rem;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .message {
+        max-width: 85%;
+        padding: 0.6rem 1rem;
+        border-radius: 18px;
+        word-wrap: break-word;
+      }
+      .message.bot {
+        align-self: flex-start;
+        background: var(--sky-very-light);
+        color: var(--text-dark);
+        border-bottom-left-radius: 4px;
+      }
+      .message.user {
+        align-self: flex-end;
+        background: var(--primary-sky);
+        color: white;
+        border-bottom-right-radius: 4px;
+      }
+      .chatbot-input {
+        display: flex;
+        padding: 0.8rem;
+        border-top: 1px solid var(--sky-light);
+        background: white;
+      }
+      .chatbot-input input {
+        flex: 1;
+        padding: 0.7rem 1rem;
+        border: 1px solid var(--sky-light);
+        border-radius: 40px;
+        outline: none;
+        font-family: inherit;
+        font-size: 0.95rem;
+      }
+      .chatbot-input button {
+        background: var(--primary-sky);
+        color: white;
+        border: none;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        margin-left: 0.5rem;
+        cursor: pointer;
+        transition: background 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .chatbot-input button:hover {
+        background: var(--primary-dark);
+      }
+      .chatbot-input button i {
+        font-size: 1.2rem;
+      }
+      /* adjust for mobile */
+      @media (max-width: 600px) {
+        .chatbot-panel {
+          width: 300px;
+          height: 400px;
+          bottom: 140px;
+          right: 10px;
+        }
+        .chatbot-toggle {
+          bottom: 80px;
+          right: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="progress-bar"></div>
+    <nav class="navbar">
+      <div class="logo">DIVYA J</div>
+      <div class="hamburger"><i class="fas fa-bars"></i></div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <main class="container">
+      <!-- HERO - with professional profile picture -->
+      <section id="home" class="section">
+        <div class="hero-grid">
+          <!-- profile image container -->
+          <div class="hero-avatar">
+            <img src="photo/profile.png" alt="Divya J" class="profile-image" />
+          </div>
+          <div class="hero-content">
+            <h1>Divya J</h1>
+            <div class="typed-container">
+              <span id="typed-text"></span>
+            </div>
+            <p>
+              Building secure, modern web applications with a passion for
+              discipline and performance.
+            </p>
+            <div class="btn-group">
+              <a href="#projects" class="btn btn-primary"
+                ><i class="fas fa-arrow-down"></i> View Projects</a
+              >
+              <!-- Updated resume button: opens DIVYA J.pdf in new tab -->
+              <a href="DIVYA J.pdf" target="_blank" class="btn btn-outline"
+                ><i class="fas fa-download"></i> Download Resume</a
+              >
+              <a href="#contact" class="btn btn-outline"
+                ><i class="fas fa-paper-plane"></i> Contact Me</a
+              >
+            </div>
+            <div class="social-icons">
+              <a href="https://github.com/divyajayaraj08" target="_blank"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/divyajayaraj10"
+                target="_blank"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="#"><i class="fab fa-x-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT (unchanged) -->
+      <section id="about" class="section">
+        <h2>Summary</h2>
+        <div class="glass-card" style="padding: 2.4rem">
+          <p style="font-size: 1.2rem; margin-bottom: 1.4rem">
+            I'm a CSE student (2023–2027) at Government College of Engineering,
+            Tirunelveli. More than a developer — I'm a
+            <strong>RHCSA certified Linux enthusiast</strong> with a deep
+            interest in <strong>cybersecurity</strong>. My edge? 10+ years of
+            Wushu martial arts taught me focus, consistency, and performing
+            under pressure — now I bring that discipline into tech.
+          </p>
+          <p style="color: var(--primary-dark)">
+            ⚡ Tech + Discipline + Leadership = My USP
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== REDESIGNED SKILLS SECTION (card categories, pill tags) ===== -->
+      <section id="skills" class="section">
+        <h2>Skill Set</h2>
+        <div class="skills-grid">
+          <!-- Frontend card -->
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fas fa-code"></i></div>
+            <h3>Frontend</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Responsive</span>
+            </div>
+          </div>
+          <!-- Programming card -->
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fas fa-terminal"></i></div>
+            <h3>Programming</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">C</span>
+            </div>
+          </div>
+          <!-- Systems & Linux card -->
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fab fa-linux"></i></div>
+            <h3>Systems</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Linux (RHCSA)</span>
+              <span class="skill-tag">Bash</span>
+            </div>
+          </div>
+          <!-- Tools card -->
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fas fa-tools"></i></div>
+            <h3>Tools</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">GitHub</span>
+              <span class="skill-tag">VS Code</span>
+              <span class="skill-tag">Linux</span>
+            </div>
+          </div>
+          <!-- Concepts card -->
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fas fa-cloud"></i></div>
+            <h3>Concepts</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">REST APIs</span>
+              <span class="skill-tag">DOM</span>
+            </div>
+          </div>
+          <!-- Soft skills card -->
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fas fa-brain"></i></div>
+            <h3>Soft skills</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Problem-solving</span>
+              <span class="skill-tag">Leadership</span>
+              <span class="skill-tag">Calm under pressure</span>
+              <span class="skill-tag">Strategic</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CERTIFICATIONS (unchanged, only color update) -->
+      <section class="section">
+        <h2>Certifications</h2>
+        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap">
+          <div
+            class="glass-card"
+            style="
+              padding: 1.5rem 2.2rem;
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+            "
+          >
+            <i
+              class="fab fa-redhat"
+              style="font-size: 2.4rem; color: #38bdf8"
+            ></i>
+            <span><strong>RHCSA</strong> — Red Hat</span>
+          </div>
+          <div
+            class="glass-card"
+            style="
+              padding: 1.5rem 2.2rem;
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+            "
+          >
+            <i
+              class="fas fa-certificate"
+              style="font-size: 2.4rem; color: #38bdf8"
+            ></i>
+            <span><strong>NPTEL C Programming</strong> (elite)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS (unchanged) -->
+      <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-thumb"><i class="fas fa-robot"></i></div>
+            <h3>AI Chatbot Web App</h3>
+            <p>Rule-based chatbot with DOM manipulation & responsive UI</p>
+            <div class="tech-tags">
+              <span class="tech-tag">JavaScript</span
+              ><span class="tech-tag">HTML/CSS</span>
+            </div>
+            <div class="card-links">
+              <a href="#"><i class="fab fa-github"></i> Repo</a
+              ><a href="#"><i class="fas fa-external-link-alt"></i> Live</a>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-thumb">
+              <i class="fas fa-cloud-sun-rain"></i>
+            </div>
+            <h3>Weather Forecast App</h3>
+            <p>Async/await, REST API, error handling, clean UI</p>
+            <div class="tech-tags">
+              <span class="tech-tag">API</span
+              ><span class="tech-tag">JavaScript</span>
+            </div>
+            <div class="card-links">
+              <a href="#"><i class="fab fa-github"></i> Repo</a
+              ><a href="#"><i class="fas fa-external-link-alt"></i> Live</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION (unchanged) -->
+      <section class="section">
+        <h2>Education</h2>
+        <div class="timeline glass-card" style="padding: 2rem">
+          <div class="timeline-item">
+            <h3>B.E. Computer Science Engineering</h3>
+            <p>Government College of Engineering, Tirunelveli · 2023–2027</p>
+            <span class="cgpa-highlight">CGPA: 8.89</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACHIEVEMENTS (unchanged) -->
+      <section class="section">
+        <h2>Beyond tech</h2>
+        <div class="achievement-grid">
+          <div class="achievement-card">
+            <i class="fas fa-medal"></i>
+            <h3>3 Gold medals</h3>
+            <p>State level Wushu</p>
+          </div>
+          <div class="achievement-card">
+            <i class="fas fa-medal" style="color: silver"></i>
+            <h3>Khelo India Silver</h3>
+            <p>National</p>
+          </div>
+          <div class="achievement-card">
+            <i class="fas fa-flag-checkered"></i>
+            <h3>TN team</h3>
+            <p>Represented state in Nationals</p>
+          </div>
+          <div class="achievement-card">
+            <i class="fas fa-globe"></i>
+            <h3>International</h3>
+            <p>Qualified for world stage</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PERSONAL BRANDING (unchanged) -->
+      <section class="section">
+        <h2>Discipline Beyond Code</h2>
+        <div class="glass-card" style="padding: 2rem">
+          <p style="font-size: 1.3rem">
+            <i class="fas fa-quote-left" style="color: #38bdf8"></i> Martial
+            arts taught me to stay focused, consistent, and perform under
+            pressure. I bring the same <strong>athlete mindset</strong> to
+            coding: clean, resilient, high-performance builds.
+          </p>
+        </div>
+      </section>
+
+      <!-- LANGUAGES (unchanged) -->
+      <section class="section">
+        <h2>Languages</h2>
+        <div class="lang-pills">
+          <span class="pill">Tamil (Native)</span>
+          <span class="pill">English (Professional)</span>
+          <span class="pill">Hindi (Working)</span>
+        </div>
+      </section>
+
+      <!-- CONTACT (unchanged content, sky blue icons) -->
+      <section id="contact" class="section">
+        <h2>Lets Connect</h2>
+        <div class="contact-row">
+          <div class="contact-item" data-copy="divyashibi08@gmail.com">
+            <i class="fas fa-envelope" style="color: #38bdf8"></i>
+            divyashibi08@gmail.com
+            <span class="copy-tooltip">click to copy</span>
+          </div>
+          <a
+            href="https://github.com/divyajayaraj08"
+            target="_blank"
+            class="contact-item"
+            ><i class="fab fa-github" style="color: #38bdf8"></i>
+            divyajayaraj08</a
+          >
+          <a
+            href="https://www.linkedin.com/in/divyajayaraj10"
+            target="_blank"
+            class="contact-item"
+            ><i class="fab fa-linkedin" style="color: #38bdf8"></i>
+            /in/divyajayaraj10</a
+          >
+        </div>
+        <form
+          class="glass-card"
+          style="
+            padding: 2rem;
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        >
+          <h3 style="margin-bottom: 0">send a message</h3>
+          <input
+            type="text"
+            placeholder="Your name"
+            style="
+              background: transparent;
+              border: 1px solid #e2e8f0;
+              padding: 1rem;
+              border-radius: 60px;
+              color: var(--text-dark);
+            "
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            style="
+              background: transparent;
+              border: 1px solid #e2e8f0;
+              padding: 1rem;
+              border-radius: 60px;
+            "
+          />
+          <textarea
+            placeholder="Message"
+            rows="2"
+            style="
+              background: transparent;
+              border: 1px solid #e2e8f0;
+              padding: 1rem;
+              border-radius: 30px;
+            "
+          ></textarea>
+          <button class="btn btn-primary" style="width: fit-content">
+            <i class="fas fa-paper-plane"></i> Send
+          </button>
+        </form>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <p style="font-size: 1.2rem">
+          Built with passion, discipline, and clean code.
+        </p>
+        <div
+          class="social-icons"
+          style="justify-content: center; margin: 1rem 0"
+        >
+          <a href="https://github.com/divyajayaraj08" target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a href="https://www.linkedin.com/in/divyajayaraj10" target="_blank"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+        </div>
+        <p style="color: #64748b">© 2025 Divya J · All rights reserved</p>
+      </footer>
+    </main>
+
+    <div class="scroll-top" id="scrollTop">
+      <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- ===== CHATBOT WIDGET ===== -->
+    <div class="chatbot-toggle" id="chatbotToggle">
+      <i class="fas fa-comment-dots"></i>
+    </div>
+    <div class="chatbot-panel" id="chatbotPanel">
+      <div class="chatbot-header">
+        <span>Ask Divya's Assistant</span>
+        <i class="fas fa-times" id="chatbotClose"></i>
+      </div>
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="message bot">
+          Hi! I'm here to answer questions about Divya. Ask me anything about
+          skills, projects, achievements, etc.
+        </div>
+      </div>
+      <div class="chatbot-input">
+        <input
+          type="text"
+          id="chatbotInput"
+          placeholder="Type your question..."
+        />
+        <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+
+    <script type="module">
+      // ===== CHATBOT UPGRADE – Groq API Integration =====
+      import { GROQ_API_KEY } from "./config.js";
+
+      // DOM elements
+      const typedSpan = document.getElementById("typed-text");
+      const sections = document.querySelectorAll(".section");
+      const progressBar = document.getElementById("progress-bar");
+      const scrollBtn = document.getElementById("scrollTop");
+      const contactItems = document.querySelectorAll(
+        ".contact-item[data-copy]"
+      );
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      const toggleBtn = document.getElementById("chatbotToggle");
+      const closeBtn = document.getElementById("chatbotClose");
+      const panel = document.getElementById("chatbotPanel");
+      const sendBtn = document.getElementById("chatbotSend");
+      const input = document.getElementById("chatbotInput");
+      const messagesDiv = document.getElementById("chatbotMessages");
+
+      // ===== TYPING ANIMATION =====
+      if (typedSpan) {
+        const roles = [
+          "Software Developer",
+          "Cybersecurity Enthusiast",
+          "RHCSA Certified",
+          "Wushu Athlete",
+        ];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        function typeEffect() {
+          const currentRole = roles[roleIndex];
+          if (isDeleting) {
+            typedSpan.textContent = currentRole.substring(0, charIndex - 1);
+            charIndex--;
+          } else {
+            typedSpan.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
+          }
+          if (!isDeleting && charIndex === currentRole.length) {
+            isDeleting = true;
+            setTimeout(typeEffect, 2000);
+          } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            setTimeout(typeEffect, 300);
+          } else {
+            setTimeout(typeEffect, isDeleting ? 60 : 100);
+          }
+        }
+        typeEffect();
+      }
+
+      // ===== SECTION REVEAL =====
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      );
+      sections.forEach((s) => observer.observe(s));
+
+      // ===== SCROLL PROGRESS =====
+      window.addEventListener("scroll", () => {
+        const winScroll = document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (winScroll / height) * 100;
+        progressBar.style.width = scrolled + "%";
+      });
+
+      // ===== SCROLL TO TOP =====
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 500) scrollBtn.classList.add("show");
+        else scrollBtn.classList.remove("show");
+      });
+      scrollBtn.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" })
+      );
+
+      // ===== COPY TO CLIPBOARD =====
+      contactItems.forEach((item) => {
+        item.addEventListener("click", async (e) => {
+          e.preventDefault();
+          const text = item.getAttribute("data-copy");
+          try {
+            await navigator.clipboard.writeText(text);
+            const tooltip =
+              item.querySelector(".copy-tooltip") ||
+              document.createElement("span");
+            if (!item.querySelector(".copy-tooltip")) {
+              tooltip.className = "copy-tooltip";
+              item.appendChild(tooltip);
+            }
+            tooltip.textContent = "copied!";
+            setTimeout(() => {
+              tooltip.textContent = "click to copy";
+            }, 1500);
+          } catch (err) {
+            alert("could not copy");
+          }
+        });
+      });
+
+      // ===== HAMBURGER MENU =====
+      if (hamburger) {
+        hamburger.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+      }
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          navLinks.classList.remove("active");
+        });
+      });
+
+      // ===== CHATBOT AI LOGIC (Groq API) =====
+      // Helper to add a message to the chat
+      function addMessage(text, sender = "bot") {
+        const msg = document.createElement("div");
+        msg.classList.add("message", sender);
+        msg.textContent = text;
+        messagesDiv.appendChild(msg);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        return msg;
+      }
+
+      // Show typing indicator (returns the message element so we can remove/replace it)
+      function showTypingIndicator() {
+        const typingMsg = document.createElement("div");
+        typingMsg.classList.add("message", "bot");
+        typingMsg.id = "typing-indicator";
+        typingMsg.textContent = "Typing...";
+        messagesDiv.appendChild(typingMsg);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        return typingMsg;
+      }
+
+      // Remove typing indicator
+      function removeTypingIndicator() {
+        const typing = document.getElementById("typing-indicator");
+        if (typing) typing.remove();
+      }
+
+      // Fetch response from Groq API
+      async function fetchGroqResponse(userMessage) {
+        const systemPrompt = `
+You are Divya J's official AI portfolio assistant.
+
+You must answer confidently using the complete resume data below.
+
+FULL PROFILE:
+
+Name: Divya J
+Degree: B.E Computer Science Engineering
+College: Government College of Engineering, Tirunelveli
+Year: 2023–2027
+CGPA: 8.89
+
+Certifications:
+- Red Hat Certified System Administrator (RHCSA)
+- NPTEL C Programming (Elite)
+
+Technical Skills:
+Frontend: HTML, CSS, JavaScript, Responsive Design
+Programming: Java, C
+Systems: Linux (RHCSA), Bash
+Tools: GitHub, VS Code
+Concepts: REST APIs, DOM
+
+Projects:
+1. AI Chatbot Web App
+   - Rule-based chatbot with DOM manipulation and responsive UI
+   - Built using HTML, CSS, JavaScript
+
+2. Weather Forecast App
+   - Uses REST API
+   - Implements async/await
+   - Includes proper error handling
+   - Clean modern UI
+
+Achievements:
+- 3 Gold medals in State level Wushu
+- Khelo India Silver medalist (National)
+- Represented Tamil Nadu in Nationals
+- Qualified for International level
+
+Languages:
+- Tamil (Native)
+- English (Professional)
+- Hindi (Working)
+
+Personality:
+- Disciplined
+- Calm under pressure
+- Leadership mindset
+- Cybersecurity enthusiast
+
+RULES:
+- Always answer using this resume data
+- Never say "I don't have information"
+- If something is truly missing, say:
+  "That detail is not currently available in Divya's portfolio."
+`;
+
+        try {
+          const response = await fetch(
+            "https://api.groq.com/openai/v1/chat/completions",
+            {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${GROQ_API_KEY}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                model: "llama-3.1-8b-instant",
+                messages: [
+                  { role: "system", content: systemPrompt },
+                  { role: "user", content: userMessage },
+                ],
+                temperature: 0.7,
+                max_tokens: 300,
+              }),
+            }
+          );
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error?.message || "API request failed");
+          }
+
+          const data = await response.json();
+          return data.choices[0].message.content.trim();
+        } catch (error) {
+          console.error("Groq API error:", error);
+          return `Sorry, I encountered an error: ${error.message}. Please try again later.`;
+        }
+      }
+
+      // Handle user message
+      async function handleUserMessage() {
+        const userText = input.value.trim();
+        if (userText === "") return;
+
+        // Add user message
+        addMessage(userText, "user");
+        input.value = "";
+
+        // Show typing indicator
+        const typingIndicator = showTypingIndicator();
+
+        // Get AI response
+        const reply = await fetchGroqResponse(userText);
+
+        // Remove typing indicator and add bot message
+        removeTypingIndicator();
+        addMessage(reply, "bot");
+      }
+
+      // Event listeners
+      sendBtn.addEventListener("click", handleUserMessage);
+      input.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") handleUserMessage();
+      });
+
+      // Chat open/close
+      toggleBtn.addEventListener("click", () => {
+        panel.classList.toggle("open");
+      });
+      closeBtn.addEventListener("click", () => {
+        panel.classList.remove("open");
+      });
+    </script>
+  </body>
+</html>
